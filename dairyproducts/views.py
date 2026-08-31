@@ -1,6 +1,8 @@
+import os
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import Product
 from .forms import ProductForm
@@ -19,7 +21,21 @@ def user_login(request):
         username_input = request.POST.get('username')
         password_input = request.POST.get('password')
 
-        # Check credentials
+        env_user = os.getenv('ADMIN_USERNAME')
+        env_pass = os.getenv('ADMIN_PASSWORD')
+
+        # 1. Check if credentials match .env configuration
+        if env_user and env_pass and username_input == env_user and password_input == env_pass:
+            user, created = User.objects.get_or_create(username=env_user)
+            if created or not user.check_password(env_pass):
+                user.set_password(env_pass)
+                user.is_staff = True
+                user.is_superuser = True
+                user.save()
+            login(request, user)
+            return redirect('dashboard')
+
+        # 2. Otherwise authenticate against database
         user = authenticate(request, username=username_input, password=password_input)
 
         if user is not None:
