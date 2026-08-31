@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<!-- Login Page Specific CSS -->
+<link rel="stylesheet" href="{% static 'dairyproducts/css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="form-card">
+        <div class="form-header">
+            <h4>🥛 Dairy Portal Login</h4>
+        </div>
+        <div class="form-body">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="form-label" for="username">Username</label>
+                    <input type="text" id="username" name="username" class="form-input" placeholder="Enter your username" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-input" placeholder="Enter your password" required>
+                </div>
+                <div class="form-group" style="margin-top: 24px; margin-bottom: 0;">
+                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

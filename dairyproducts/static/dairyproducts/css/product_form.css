@@ -1,0 +1,120 @@
+/* ========================================================
+   Product Form CSS - Styles for product_form.html
+   Product Add/Edit Form, Input Fields & Action Buttons
+   ======================================================== */
+
+.form-container {
+    max-width: 560px;
+    margin: 30px auto;
+}
+
+.form-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.form-header {
+    background: var(--primary-gradient);
+    color: #ffffff;
+    padding: 20px 24px;
+    text-align: center;
+}
+
+.form-header h5 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.form-body {
+    padding: 28px 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #334155;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 0.925rem;
+    font-family: inherit;
+    border: 1.5px solid #cbd5e1;
+    border-radius: var(--radius-sm);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: #ffffff;
+    color: var(--text-main);
+}
+
+.form-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+}
+
+.field-error {
+    color: var(--danger-color);
+    font-size: 0.8rem;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+/* Action Buttons */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 26px;
+    gap: 12px;
+}
+
+.btn-secondary {
+    background-color: #64748b;
+    color: #ffffff;
+    border-color: #64748b;
+}
+.btn-secondary:hover {
+    background-color: #475569;
+    border-color: #475569;
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    color: #ffffff;
+    border-color: var(--success-color);
+}
+.btn-success:hover {
+    background-color: var(--success-hover);
+    border-color: var(--success-hover);
+}
+
+/* --- Product Form Responsive Media Queries --- */
+@media (max-width: 580px) {
+    .form-container {
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+
+    .form-body {
+        padding: 20px 16px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+}

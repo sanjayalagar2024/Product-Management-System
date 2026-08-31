@@ -1,0 +1,261 @@
+/* ========================================================
+   Base CSS - Global Styles, Layout, Navbar, Alerts & Footer
+   Applies across all pages extending base.html
+   ======================================================== */
+
+/* --- CSS Custom Properties (Variables) --- */
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-gradient: linear-gradient(135deg, #1e40af, #2563eb);
+    --primary-light: #eff6ff;
+    
+    --success-color: #10b981;
+    --success-hover: #059669;
+    --success-gradient: linear-gradient(135deg, #065f46, #10b981);
+    --success-light: #ecfdf5;
+    
+    --warning-color: #f59e0b;
+    --warning-hover: #d97706;
+    --warning-light: #fffbeb;
+    
+    --danger-color: #ef4444;
+    --danger-hover: #dc2626;
+    --danger-light: #fef2f2;
+    
+    --dark-gradient: linear-gradient(135deg, #0f172a, #334155);
+    
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+    
+    --transition: all 0.2s ease-in-out;
+}
+
+/* --- Global Reset --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- Layout Container --- */
+.container {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main-content {
+    flex: 1 0 auto;
+    padding-bottom: 40px;
+}
+
+/* --- Navigation Header --- */
+.navbar {
+    background: var(--primary-gradient);
+    color: #ffffff;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 28px;
+}
+
+.navbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+}
+
+.brand-logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: -0.02em;
+}
+
+.brand-logo:hover {
+    opacity: 0.95;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- Common Button Styles --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition);
+    line-height: 1.3;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+}
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+.btn-warning {
+    background-color: var(--warning-color);
+    color: #1e293b;
+    border-color: var(--warning-color);
+}
+.btn-warning:hover {
+    background-color: var(--warning-hover);
+    border-color: var(--warning-hover);
+    color: #0f172a;
+}
+
+.btn-light {
+    background-color: #ffffff;
+    color: var(--primary-color);
+    border-color: #ffffff;
+}
+.btn-light:hover {
+    background-color: #f1f5f9;
+    color: var(--primary-hover);
+}
+
+.btn-outline-light {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.7);
+}
+.btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #ffffff;
+}
+
+/* --- Alerts & Flash Messages --- */
+.alert-container {
+    margin-bottom: 20px;
+}
+
+.alert {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid transparent;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.alert-info {
+    background-color: var(--primary-light);
+    color: #1e40af;
+    border-color: #bfdbfe;
+}
+
+.alert-success {
+    background-color: var(--success-light);
+    color: #065f46;
+    border-color: #a7f3d0;
+}
+
+.alert-error {
+    background-color: var(--danger-light);
+    color: #991b1b;
+    border-color: #fecaca;
+}
+
+.alert-close {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    color: currentColor;
+    opacity: 0.7;
+    padding: 0 4px;
+    line-height: 1;
+    transition: opacity 0.2s;
+}
+
+.alert-close:hover {
+    opacity: 1;
+}
+
+/* --- Footer --- */
+footer {
+    margin-top: auto;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+    background: #ffffff;
+}
+
+/* --- Keyframe Animations --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Navbar Responsive Media Queries --- */
+@media (max-width: 768px) {
+    .navbar-inner {
+        flex-direction: column;
+        gap: 14px;
+        text-align: center;
+    }
+
+    .nav-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}

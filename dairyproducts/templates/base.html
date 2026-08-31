@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dairy Products Management</title>
+    <!-- Base Global Stylesheet -->
+    <link rel="stylesheet" href="{% static 'dairyproducts/css/base.css' %}">
+    <!-- Page Specific Stylesheet Block -->
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <!-- Top Navigation Header -->
+    <header class="navbar">
+        <div class="container navbar-inner">
+            <a class="brand-logo" href="{% url 'dashboard' %}">
+                <span>🥛</span> Dairy Management
+            </a>
+            <nav class="nav-actions">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'dashboard' %}" class="btn btn-light btn-sm">Dashboard</a>
+                    <a href="{% url 'add_product' %}" class="btn btn-warning btn-sm">+ Add Product</a>
+                    <a href="{% url 'logout' %}" class="btn btn-outline-light btn-sm">Logout ({{ user.username }})</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-light btn-sm">Login</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Success & Error Alert Messages -->
+            {% if messages %}
+                <div class="alert-container">
+                    {% for message in messages %}
+                        <div class="alert {% if message.tags == 'error' %}alert-error{% elif message.tags == 'success' %}alert-success{% else %}alert-info{% endif %}">
+                            <span>{{ message }}</span>
+                            <button type="button" class="alert-close" onclick="this.parentElement.remove();">&times;</button>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <!-- Child template content -->
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- Page Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Dairy Management System &bull; Pure HTML &amp; CSS</p>
+        </div>
+    </footer>
+
+</body>
+</html>
