@@ -1,2 +1,22 @@
-/db.sqlite3
-/env
+# Environment & Secrets
+.env
+.env.*
+
+# Python Virtual Environment
+env/
+venv/
+ENV/
+
+# Databases
+*.sqlite3
+db.sqlite3
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE Settings
+.vscode/
+.idea/
+
